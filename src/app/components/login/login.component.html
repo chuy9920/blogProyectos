@@ -1,0 +1,40 @@
+ <form #projectForm="ngForm" (ngSubmit)="onSubmit(projectForm)">
+    <p>
+      <label for="username">Name</label>
+      <input type="text" name="username" #name="ngModel" [(ngModel)]="project.name" required>
+      <span class="formError" *ngIf="name.touched && !name.valid">
+        El nombre del proyecto es obligatorio
+      </span>
+    </p>
+
+    <p>
+      <label for="description">Descripción</label>
+      <textarea  name="description" #description="ngModel" [(ngModel)]="project.description" required></textarea>
+      <span class="formError" *ngIf="description.touched && !description.valid">
+        La descripción del proyecto es obligatorio
+      </span>
+    </p>
+
+    <p>
+      <label for="category">Categoría</label>
+      <input type="text" name="category" #category="ngModel" [(ngModel)]="project.category" required>
+      <span class="formError" *ngIf="category.touched && !category.valid">
+        La categoría del proyecto es obligatoria
+      </span>
+    </p>
+
+    <p>
+      <label for="year">Año</label>
+      <input type="number" name="year" #year="ngModel" [(ngModel)]="project.year" required>
+      <!-- <span *ngIf="year.touched && !year.valid"></span> -->
+    </p>
+
+    <p>
+      <label for="langs">Lenguaje</label>
+      <input type="text" name="langs" #langs="ngModel" [(ngModel)]="project.langs" >
+      <span class="formError" *ngIf="langs.touched && !langs.valid">
+        Debes de indicar los lenguajes
+      </span>
+    </p>
+    <input type="submit" value="Enviar" [disabled]="!projectForm.valid">
+  </form>
